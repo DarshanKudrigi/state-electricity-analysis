@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive Analytics Dashboard for India State Electricity Consumption (2012-2025). Analyze trends, state disparities, population elasticity, urbanization, and weather correlation.">
+  <title>India State Electricity Consumption Intelligence Dashboard</title>
+  
+  <!-- Modern Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Chart.js for Interactive Visualizations -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Ambient Gradient Background Glows -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+
+  <!-- Header & Top Navigation -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand">
+        <div class="logo-badge">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+        </div>
+        <div>
+          <h1 class="brand-title">State Electricity Intelligence <span class="badge-live">Live Analytics</span></h1>
+          <p class="brand-subtitle">Empirical Analysis & Multi-Variate Exploration (India: 2012–2025)</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button id="themeToggleBtn" class="btn btn-secondary" title="Toggle Theme">
+          <span class="icon-sun">☀️</span>
+          <span class="icon-moon">🌙</span>
+          <span class="theme-text">Theme</span>
+        </button>
+        <button id="refreshDataBtn" class="btn btn-secondary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+          </svg>
+          Reload Data
+        </button>
+        <a href="figures/01_total_consumption_timeseries.png" download class="btn btn-primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Export Assets
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Layout -->
+  <main class="main-container">
+
+    <!-- KPI Summary Row -->
+    <section class="kpi-grid" aria-label="Key Performance Indicators">
+      <div class="kpi-card" id="kpiMeanDaily">
+        <div class="kpi-header">
+          <span class="kpi-label">All-India Daily Mean</span>
+          <span class="kpi-pill pill-cyan">2013-2024</span>
+        </div>
+        <div class="kpi-value-wrap">
+          <span class="kpi-value" id="valMeanDaily">3,555.7</span>
+          <span class="kpi-unit">GWh / day</span>
+        </div>
+        <div class="kpi-footer positive">
+          <span class="trend-icon">▲</span> +69.3% secular rise from 2013 baseline
+        </div>
+      </div>
+
+      <div class="kpi-card" id="kpiPeakDemand">
+        <div class="kpi-header">
+          <span class="kpi-label">All-Time Peak Record</span>
+          <span class="kpi-pill pill-emerald">18 Jun 2024</span>
+        </div>
+        <div class="kpi-value-wrap">
+          <span class="kpi-value" id="valPeakDemand">5,460.7</span>
+          <span class="kpi-unit">GWh / day</span>
+        </div>
+        <div class="kpi-footer neutral">
+          <span class="trend-icon">⚡</span> Maximum national grid load recorded
+        </div>
+      </div>
+
+      <div class="kpi-card" id="kpiPopCorrelation">
+        <div class="kpi-header">
+          <span class="kpi-label">Population Elasticity</span>
+          <span class="kpi-pill pill-violet">Pearson r</span>
+        </div>
+        <div class="kpi-value-wrap">
+          <span class="kpi-value" id="valPopCorr">+0.987</span>
+          <span class="kpi-unit">R² = 0.974</span>
+        </div>
+        <div class="kpi-footer positive">
+          <span class="trend-icon">●</span> 97.4% variance explained by state scale
+        </div>
+      </div>
+
+      <div class="kpi-card" id="kpiSummerSurge">
+        <div class="kpi-header">
+          <span class="kpi-label">Summer Demand Surge</span>
+          <span class="kpi-pill pill-rose">May Peak</span>
+        </div>
+        <div class="kpi-value-wrap">
+          <span class="kpi-value" id="valSummerSurge">+19.7%</span>
+          <span class="kpi-unit">vs Feb Low</span>
+        </div>
+        <div class="kpi-footer warning">
+          <span class="trend-icon">🔥</span> Peak thermal cooling load demand
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs-wrapper" aria-label="Dashboard Navigation Tabs">
+      <div class="nav-tabs" role="tablist">
+        <button class="tab-btn active" role="tab" aria-selected="true" data-tab="tab-trends">
+          <span class="tab-icon">📈</span> National Trends
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" data-tab="tab-states">
+          <span class="tab-icon">🗺️</span> State Disparities
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" data-tab="tab-climate">
+          <span class="tab-icon">☀️</span> Climate & Weather
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" data-tab="tab-urbanization">
+          <span class="tab-icon">🏙️</span> Urbanization
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" data-tab="tab-gallery">
+          <span class="tab-icon">🖼️</span> High-Res Figures
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" data-tab="tab-reports">
+          <span class="tab-icon">📑</span> Findings Report
+        </button>
+      </div>
+    </nav>
+
+    <!-- TAB 1: National Trends -->
+    <div id="tab-trends" class="tab-content active" role="tabpanel">
+      <div class="charts-grid-2">
+        <!-- Daily Time Series -->
+        <div class="card chart-card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">All-India Daily Electricity Consumption (2013 – 2024)</h2>
+              <p class="card-subtitle">Daily aggregate load & 30-day centered moving average</p>
+            </div>
+            <div class="card-actions">
+              <span class="badge-info">3,701 Observations</span>
+            </div>
+          </div>
+          <div class="chart-container" style="height: 380px;">
+            <canvas id="dailyTimeseriesChart"></canvas>
+          </div>
+          <div class="chart-annotations">
+            <div class="annotation-item">
+              <span class="dot dot-rose"></span>
+              <strong>COVID-19 Dip:</strong> April 2020 recorded sharp trough (~2,589 GWh) during industrial shutdown.
+            </div>
+            <div class="annotation-item">
+              <span class="dot dot-emerald"></span>
+              <strong>Post-Pandemic Rebound:</strong> Sustained double-digit expansion throughout 2021-2024.
+            </div>
+          </div>
+        </div>
+
+        <!-- Annual Growth & Seasonality -->
+        <div class="card chart-card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">Annual Trajectory & Year-over-Year Growth Rate</h2>
+              <p class="card-subtitle">Daily average consumption by year and annual percentage changes</p>
+            </div>
+          </div>
+          <div class="chart-container" style="height: 380px;">
+            <canvas id="annualGrowthChart"></canvas>
+          </div>
+          <div class="chart-annotations">
+            <div class="annotation-item">
+              <span class="dot dot-blue"></span>
+              <strong>Trajectory:</strong> +69.3% expansion from 2,771 GWh/day (2013) to 4,693 GWh/day (2024).
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Monthly Seasonality Curve -->
+      <div class="card chart-card mt-4">
+        <div class="card-header">
+          <div>
+            <h2 class="card-title">Monthly Seasonality & Load Profile (Calendar Months)</h2>
+            <p class="card-subtitle">Average monthly electricity consumption across 36 states & Union Territories</p>
+          </div>
+          <div class="filter-controls">
+            <span class="badge-accent">Peak: May (3.61 GWh)</span>
+            <span class="badge-neutral">Trough: Feb (3.02 GWh)</span>
+          </div>
+        </div>
+        <div class="chart-container" style="height: 300px;">
+          <canvas id="seasonalityChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: State Disparities & Drilldown -->
+    <div id="tab-states" class="tab-content" role="tabpanel">
+      <!-- State Drill-Down Header -->
+      <div class="card filter-bar-card mb-4">
+        <div class="filter-bar-content">
+          <div class="filter-group">
+            <label for="stateSelector" class="filter-label">Select State / Union Territory for Drill-down:</label>
+            <select id="stateSelector" class="custom-select">
+              <option value="Uttar Pradesh">Uttar Pradesh (Rank 1)</option>
+              <option value="Maharashtra">Maharashtra (Rank 2)</option>
+              <option value="Bihar">Bihar (Rank 3)</option>
+              <option value="West Bengal">West Bengal (Rank 4)</option>
+              <option value="Madhya Pradesh">Madhya Pradesh (Rank 5)</option>
+              <option value="Tamil Nadu">Tamil Nadu</option>
+              <option value="Gujarat">Gujarat</option>
+              <option value="Karnataka">Karnataka</option>
+              <option value="Rajasthan">Rajasthan</option>
+              <option value="Kerala">Kerala</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Punjab">Punjab</option>
+            </select>
+          </div>
+          <div class="state-quick-stats" id="stateQuickStats">
+            <!-- Populated dynamically via JS -->
+          </div>
+        </div>
+      </div>
+
+      <div class="charts-grid-2">
+        <!-- Top 10 vs Bottom 10 Comparison -->
+        <div class="card chart-card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">Top 10 vs. Bottom 10 Consumers</h2>
+              <p class="card-subtitle">Mean monthly consumption across states (GWh)</p>
+            </div>
+            <div class="btn-group">
+              <button id="btnShowTop" class="btn-sm active">Top 10</button>
+              <button id="btnShowBottom" class="btn-sm">Bottom 10</button>
+            </div>
+          </div>
+          <div class="chart-container" style="height: 380px;">
+            <canvas id="stateRankingChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Selected State Historical Trend -->
+        <div class="card chart-card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title" id="stateDrilldownTitle">State Annual Consumption Trend</h2>
+              <p class="card-subtitle">Historical progression across 2012–2025 panel records</p>
+            </div>
+          </div>
+          <div class="chart-container" style="height: 380px;">
+            <canvas id="stateHistoryChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- State Metrics Table Explorer -->
+      <div class="card mt-4">
+        <div class="card-header">
+          <div>
+            <h2 class="card-title">All-India State & UT Metrics Directory (36 Entities)</h2>
+            <p class="card-subtitle">Comprehensive demographic, urban, thermal, and consumption profiles</p>
+          </div>
+          <div class="search-box">
+            <input type="text" id="stateSearchInput" placeholder="Filter states..." class="search-input">
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="data-table" id="statesTable">
+            <thead>
+              <tr>
+                <th data-sort="name">State / UT</th>
+                <th data-sort="consumption" class="num-col">Mean Monthly (GWh)</th>
+                <th data-sort="per_capita" class="num-col">Per Capita (kWh)</th>
+                <th data-sort="pop" class="num-col">Population (M)</th>
+                <th data-sort="urbanization" class="num-col">Urban Rate (%)</th>
+                <th data-sort="temp" class="num-col">Avg Temp (°C)</th>
+              </tr>
+            </thead>
+            <tbody id="statesTableBody">
+              <!-- Rendered dynamically via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: Climate & Weather -->
+    <div id="tab-climate" class="tab-content" role="tabpanel">
+      <div class="grid-weather-summary mb-4">
+        <div class="weather-stat-card">
+          <div class="weather-icon">🌡️</div>
+          <div class="weather-title">Temperature Effect</div>
+          <div class="weather-corr pos">+0.291 (Pearson r)</div>
+          <p class="weather-desc">Higher temperatures directly stimulate space-cooling and HVAC air conditioning grid draw.</p>
+        </div>
+        <div class="weather-stat-card">
+          <div class="weather-icon">💧</div>
+          <div class="weather-title">Humidity Effect</div>
+          <div class="weather-corr neg">-0.220 (Pearson r)</div>
+          <p class="weather-desc">Monsoon humidity coincides with lower outdoor thermal extremes, curbing cooling peaks.</p>
+        </div>
+        <div class="weather-stat-card">
+          <div class="weather-icon">🌧️</div>
+          <div class="weather-title">Precipitation Effect</div>
+          <div class="weather-corr neg">-0.138 (Pearson r)</div>
+          <p class="weather-desc">Monsoon downpours reduce ambient temperatures and suppress urban electricity demand.</p>
+        </div>
+        <div class="weather-stat-card">
+          <div class="weather-icon">☀️</div>
+          <div class="weather-title">Solar Radiation</div>
+          <div class="weather-corr neu">-0.010 (Negligible)</div>
+          <p class="weather-desc">Linear correlation with grid draw is near zero after adjusting for seasonal shifts.</p>
+        </div>
+      </div>
+
+      <div class="charts-grid-2">
+        <div class="card chart-card">
+          <div class="card-header">
+            <h2 class="card-title">Temperature vs. Electricity Consumption (Scatter)</h2>
+            <p class="card-subtitle">State monthly average temperature (°C) against GWh demand</p>
+          </div>
+          <div class="chart-container" style="height: 360px;">
+            <canvas id="weatherScatterChart"></canvas>
+          </div>
+        </div>
+
+        <div class="card chart-card">
+          <div class="card-header">
+            <h2 class="card-title">Empirical Meteorological Correlations</h2>
+            <p class="card-subtitle">Correlation coefficients and physical mechanism notes</p>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table" id="weatherCorrTable">
+              <thead>
+                <tr>
+                  <th>Indicator</th>
+                  <th>Pearson r</th>
+                  <th>Association</th>
+                  <th>Physical Driver</th>
+                </tr>
+              </thead>
+              <tbody id="weatherTableBody">
+                <!-- Rendered dynamically via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: Urbanization & Demographics -->
+    <div id="tab-urbanization" class="tab-content" role="tabpanel">
+      <div class="charts-grid-2">
+        <div class="card chart-card">
+          <div class="card-header">
+            <h2 class="card-title">Urbanization Rate vs. Total State Consumption</h2>
+            <p class="card-subtitle">Percentage of urban population vs total monthly GWh draw</p>
+          </div>
+          <div class="chart-container" style="height: 380px;">
+            <canvas id="urbanScatterChart"></canvas>
+          </div>
+        </div>
+
+        <div class="card chart-card">
+          <div class="card-header">
+            <h2 class="card-title">Urbanization Rate vs. Per Capita Consumption</h2>
+            <p class="card-subtitle">Evaluating per capita electricity use against urbanization density</p>
+          </div>
+          <div class="chart-container" style="height: 380px;">
+            <canvas id="urbanPerCapitaChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mt-4 callout-card">
+        <div class="callout-icon">💡</div>
+        <div>
+          <h3 class="callout-title">The Urbanization Paradox Explained</h3>
+          <p class="callout-text">
+            While total urban population is strongly correlated with electricity consumption (<strong>r = +0.931</strong>), the urbanization <em>percentage</em> exhibits a slight negative correlation (<strong>r = -0.147</strong>). This is an empirical artifact of geographic scale: small Union Territories like Chandigarh (>97% urbanized) and Delhi have dense urban proportions but compact total consumption relative to agricultural megastates like Uttar Pradesh and Bihar.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 5: Publication Figures Gallery -->
+    <div id="tab-gallery" class="tab-content" role="tabpanel">
+      <div class="gallery-intro mb-4">
+        <p>All figures below were rendered by the Python pipeline using Matplotlib and Seaborn at <strong>300 DPI publication resolution</strong>. Click any card to inspect the full-resolution asset.</p>
+      </div>
+      <div class="figures-gallery-grid" id="figuresGallery">
+        <!-- Rendered dynamically via JS -->
+      </div>
+    </div>
+
+    <!-- TAB 6: Findings Report Viewer -->
+    <div id="tab-reports" class="tab-content" role="tabpanel">
+      <div class="card report-viewer-card">
+        <div class="card-header">
+          <div>
+            <h2 class="card-title">State Electricity Analysis: Executive Report</h2>
+            <p class="card-subtitle">Comprehensive findings automatically generated from computed results</p>
+          </div>
+          <a href="../outputs/reports/state_electricity_analysis_findings.md" download class="btn btn-secondary">
+            Download Markdown (.md)
+          </a>
+        </div>
+        <div class="report-content" id="reportContentArea">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Image Lightbox Modal -->
+  <div id="imageModal" class="modal" aria-hidden="true">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-dialog">
+      <button class="modal-close" id="modalCloseBtn" aria-label="Close modal">&times;</button>
+      <div class="modal-body">
+        <img id="modalImage" src="" alt="Enlarged figure view">
+        <div class="modal-caption" id="modalCaption"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <p>State Electricity Consumption Analysis & Visualization Project • Built with Python, Pandas, Matplotlib, Seaborn & Modern Vanilla Web Technologies.</p>
+      <p class="text-muted">Reproducible UV-managed pipeline • Original CSV datasets preserved in <code>datasets/</code>.</p>
+    </div>
+  </footer>
+
+  <!-- Dashboard JavaScript -->
+  <script src="app.js"></script>
+</body>
+</html>

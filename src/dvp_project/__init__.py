@@ -1,2 +1,5 @@
-def main() -> None:
-    print("Hello from dvp-project!")
+"""dvp_project package initialization."""
+
+from dvp_project.main import main
+
+__all__ = ["main"]
