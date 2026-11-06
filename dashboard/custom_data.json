@@ -1,0 +1,1135 @@
+{
+  "name": "electricity_vs_population_all_india_monthly_2012_2025",
+  "row_count": 6048,
+  "column_count": 7,
+  "columns": [
+    "Year",
+    "Month",
+    "State_UT",
+    "Population_Million",
+    "Population_Growth_pct",
+    "Electricity_Consumption_GWh",
+    "Electricity_Per_Capita_kWh"
+  ],
+  "column_types": {
+    "date_cols": [],
+    "numeric_cols": [
+      "Year",
+      "Month",
+      "Population_Million",
+      "Population_Growth_pct",
+      "Electricity_Consumption_GWh",
+      "Electricity_Per_Capita_kWh"
+    ],
+    "categorical_cols": [
+      "State_UT"
+    ]
+  },
+  "numeric_summary": {
+    "Year": {
+      "count": 6048,
+      "sum": 12207888.0,
+      "mean": 2018.5,
+      "std": 4.03,
+      "min": 2012.0,
+      "max": 2025.0,
+      "median": 2018.5
+    },
+    "Month": {
+      "count": 6048,
+      "sum": 39312.0,
+      "mean": 6.5,
+      "std": 3.45,
+      "min": 1.0,
+      "max": 12.0,
+      "median": 6.5
+    },
+    "Population_Million": {
+      "count": 6048,
+      "sum": 225050.43,
+      "mean": 37.21,
+      "std": 48.05,
+      "min": 0.07,
+      "max": 260.67,
+      "median": 23.24
+    },
+    "Population_Growth_pct": {
+      "count": 6048,
+      "sum": 9038.4,
+      "mean": 1.49,
+      "std": 0.5,
+      "min": 0.4,
+      "max": 2.5,
+      "median": 1.5
+    },
+    "Electricity_Consumption_GWh": {
+      "count": 6048,
+      "sum": 19551.0,
+      "mean": 3.23,
+      "std": 4.24,
+      "min": 0.01,
+      "max": 28.96,
+      "median": 1.94
+    },
+    "Electricity_Per_Capita_kWh": {
+      "count": 6048,
+      "sum": 6239158.35,
+      "mean": 1031.61,
+      "std": 91.05,
+      "min": 829.96,
+      "max": 1226.34,
+      "median": 1032.33
+    }
+  },
+  "correlations": {
+    "Year": {
+      "Year": 1.0,
+      "Month": 0.0,
+      "Population_Million": 0.046,
+      "Population_Growth_pct": -0.0,
+      "Electricity_Consumption_GWh": 0.112,
+      "Electricity_Per_Capita_kWh": 0.974
+    },
+    "Month": {
+      "Year": 0.0,
+      "Month": 1.0,
+      "Population_Million": -0.0,
+      "Population_Growth_pct": -0.0,
+      "Electricity_Consumption_GWh": 0.001,
+      "Electricity_Per_Capita_kWh": 0.003
+    },
+    "Population_Million": {
+      "Year": 0.046,
+      "Month": -0.0,
+      "Population_Million": 1.0,
+      "Population_Growth_pct": -0.006,
+      "Electricity_Consumption_GWh": 0.991,
+      "Electricity_Per_Capita_kWh": 0.046
+    },
+    "Population_Growth_pct": {
+      "Year": -0.0,
+      "Month": -0.0,
+      "Population_Million": -0.006,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": -0.009,
+      "Electricity_Per_Capita_kWh": -0.015
+    },
+    "Electricity_Consumption_GWh": {
+      "Year": 0.112,
+      "Month": 0.001,
+      "Population_Million": 0.991,
+      "Population_Growth_pct": -0.009,
+      "Electricity_Consumption_GWh": 1.0,
+      "Electricity_Per_Capita_kWh": 0.113
+    },
+    "Electricity_Per_Capita_kWh": {
+      "Year": 0.974,
+      "Month": 0.003,
+      "Population_Million": 0.046,
+      "Population_Growth_pct": -0.015,
+      "Electricity_Consumption_GWh": 0.113,
+      "Electricity_Per_Capita_kWh": 1.0
+    }
+  },
+  "category_summaries": {
+    "State_UT": [
+      {
+        "label": "Andaman and Nicobar Islands",
+        "sum": 339108.0,
+        "mean": 2018.5,
+        "count": 168
+      },
+      {
+        "label": "Andhra Pradesh",
+        "sum": 339108.0,
+        "mean": 2018.5,
+        "count": 168
+      },
+      {
+        "label": "Arunachal Pradesh",
+        "sum": 339108.0,
+        "mean": 2018.5,
+        "count": 168
+      },
+      {
+        "label": "Assam",
+        "sum": 339108.0,
+        "mean": 2018.5,
+        "count": 168
+      },
+      {
+        "label": "Bihar",
+        "sum": 339108.0,
+        "mean": 2018.5,
+        "count": 168
+      },
+      {
+        "label": "Chandigarh",
+        "sum": 339108.0,
+        "mean": 2018.5,
+        "count": 168
+      },
+      {
+        "label": "Chhattisgarh",
+        "sum": 339108.0,
+        "mean": 2018.5,
+        "count": 168
+      },
+      {
+        "label": "Dadra and Nagar Haveli and Daman and Diu",
+        "sum": 339108.0,
+        "mean": 2018.5,
+        "count": 168
+      },
+      {
+        "label": "Delhi",
+        "sum": 339108.0,
+        "mean": 2018.5,
+        "count": 168
+      },
+      {
+        "label": "Goa",
+        "sum": 339108.0,
+        "mean": 2018.5,
+        "count": 168
+      },
+      {
+        "label": "Gujarat",
+        "sum": 339108.0,
+        "mean": 2018.5,
+        "count": 168
+      },
+      {
+        "label": "Haryana",
+        "sum": 339108.0,
+        "mean": 2018.5,
+        "count": 168
+      },
+      {
+        "label": "Himachal Pradesh",
+        "sum": 339108.0,
+        "mean": 2018.5,
+        "count": 168
+      },
+      {
+        "label": "Jammu and Kashmir",
+        "sum": 339108.0,
+        "mean": 2018.5,
+        "count": 168
+      },
+      {
+        "label": "Jharkhand",
+        "sum": 339108.0,
+        "mean": 2018.5,
+        "count": 168
+      }
+    ]
+  },
+  "time_series": [],
+  "primary_metric": "Year",
+  "primary_category": "State_UT",
+  "primary_date": null,
+  "missing_values": {},
+  "sample_records": [
+    {
+      "Year": 2012,
+      "Month": 1,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 50.022,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 3.6,
+      "Electricity_Per_Capita_kWh": 889.95
+    },
+    {
+      "Year": 2012,
+      "Month": 2,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 50.065,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 3.7,
+      "Electricity_Per_Capita_kWh": 924.88
+    },
+    {
+      "Year": 2012,
+      "Month": 3,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 50.098,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 3.87,
+      "Electricity_Per_Capita_kWh": 898.61
+    },
+    {
+      "Year": 2012,
+      "Month": 4,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 50.02,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.14,
+      "Electricity_Per_Capita_kWh": 897.42
+    },
+    {
+      "Year": 2012,
+      "Month": 5,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 50.059,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 3.91,
+      "Electricity_Per_Capita_kWh": 871.05
+    },
+    {
+      "Year": 2012,
+      "Month": 6,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 50.008,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 3.65,
+      "Electricity_Per_Capita_kWh": 896.79
+    },
+    {
+      "Year": 2012,
+      "Month": 7,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 50.05,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 3.64,
+      "Electricity_Per_Capita_kWh": 900.56
+    },
+    {
+      "Year": 2012,
+      "Month": 8,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 50.109,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 3.69,
+      "Electricity_Per_Capita_kWh": 880.85
+    },
+    {
+      "Year": 2012,
+      "Month": 9,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 50.059,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 3.74,
+      "Electricity_Per_Capita_kWh": 898.58
+    },
+    {
+      "Year": 2012,
+      "Month": 10,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 50.065,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 3.73,
+      "Electricity_Per_Capita_kWh": 887.3
+    },
+    {
+      "Year": 2012,
+      "Month": 11,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 50.051,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 3.81,
+      "Electricity_Per_Capita_kWh": 901.44
+    },
+    {
+      "Year": 2012,
+      "Month": 12,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 50.089,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 3.53,
+      "Electricity_Per_Capita_kWh": 896.95
+    },
+    {
+      "Year": 2013,
+      "Month": 1,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 50.45,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 3.71,
+      "Electricity_Per_Capita_kWh": 918.74
+    },
+    {
+      "Year": 2013,
+      "Month": 2,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 50.438,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 3.65,
+      "Electricity_Per_Capita_kWh": 911.29
+    },
+    {
+      "Year": 2013,
+      "Month": 3,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 50.462,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 3.62,
+      "Electricity_Per_Capita_kWh": 914.86
+    },
+    {
+      "Year": 2013,
+      "Month": 4,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 50.399,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 3.94,
+      "Electricity_Per_Capita_kWh": 915.29
+    },
+    {
+      "Year": 2013,
+      "Month": 5,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 50.404,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.17,
+      "Electricity_Per_Capita_kWh": 911.72
+    },
+    {
+      "Year": 2013,
+      "Month": 6,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 50.466,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 3.95,
+      "Electricity_Per_Capita_kWh": 927.44
+    },
+    {
+      "Year": 2013,
+      "Month": 7,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 50.416,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 3.7,
+      "Electricity_Per_Capita_kWh": 923.73
+    },
+    {
+      "Year": 2013,
+      "Month": 8,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 50.447,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 3.64,
+      "Electricity_Per_Capita_kWh": 913.47
+    },
+    {
+      "Year": 2013,
+      "Month": 9,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 50.461,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 3.9,
+      "Electricity_Per_Capita_kWh": 934.95
+    },
+    {
+      "Year": 2013,
+      "Month": 10,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 50.449,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 3.95,
+      "Electricity_Per_Capita_kWh": 930.81
+    },
+    {
+      "Year": 2013,
+      "Month": 11,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 50.49,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 3.7,
+      "Electricity_Per_Capita_kWh": 901.04
+    },
+    {
+      "Year": 2013,
+      "Month": 12,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 50.421,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 3.74,
+      "Electricity_Per_Capita_kWh": 925.98
+    },
+    {
+      "Year": 2014,
+      "Month": 1,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 51.063,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 3.72,
+      "Electricity_Per_Capita_kWh": 983.03
+    },
+    {
+      "Year": 2014,
+      "Month": 2,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 51.054,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 3.7,
+      "Electricity_Per_Capita_kWh": 937.49
+    },
+    {
+      "Year": 2014,
+      "Month": 3,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 51.039,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.14,
+      "Electricity_Per_Capita_kWh": 939.03
+    },
+    {
+      "Year": 2014,
+      "Month": 4,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 51.063,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.07,
+      "Electricity_Per_Capita_kWh": 923.6
+    },
+    {
+      "Year": 2014,
+      "Month": 5,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 51.018,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.43,
+      "Electricity_Per_Capita_kWh": 937.1
+    },
+    {
+      "Year": 2014,
+      "Month": 6,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 51.048,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.08,
+      "Electricity_Per_Capita_kWh": 937.79
+    },
+    {
+      "Year": 2014,
+      "Month": 7,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 51.04,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 3.9,
+      "Electricity_Per_Capita_kWh": 915.46
+    },
+    {
+      "Year": 2014,
+      "Month": 8,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 51.054,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.01,
+      "Electricity_Per_Capita_kWh": 998.64
+    },
+    {
+      "Year": 2014,
+      "Month": 9,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 51.064,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.16,
+      "Electricity_Per_Capita_kWh": 947.05
+    },
+    {
+      "Year": 2014,
+      "Month": 10,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 51.041,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.14,
+      "Electricity_Per_Capita_kWh": 930.88
+    },
+    {
+      "Year": 2014,
+      "Month": 11,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 51.024,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 3.87,
+      "Electricity_Per_Capita_kWh": 925.1
+    },
+    {
+      "Year": 2014,
+      "Month": 12,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 51.0,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 3.8,
+      "Electricity_Per_Capita_kWh": 904.44
+    },
+    {
+      "Year": 2015,
+      "Month": 1,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 51.527,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 3.96,
+      "Electricity_Per_Capita_kWh": 944.41
+    },
+    {
+      "Year": 2015,
+      "Month": 2,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 51.473,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 3.72,
+      "Electricity_Per_Capita_kWh": 969.34
+    },
+    {
+      "Year": 2015,
+      "Month": 3,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 51.485,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 3.99,
+      "Electricity_Per_Capita_kWh": 944.05
+    },
+    {
+      "Year": 2015,
+      "Month": 4,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 51.437,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.58,
+      "Electricity_Per_Capita_kWh": 985.0
+    },
+    {
+      "Year": 2015,
+      "Month": 5,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 51.499,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.64,
+      "Electricity_Per_Capita_kWh": 973.29
+    },
+    {
+      "Year": 2015,
+      "Month": 6,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 51.509,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.3,
+      "Electricity_Per_Capita_kWh": 975.65
+    },
+    {
+      "Year": 2015,
+      "Month": 7,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 51.49,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.17,
+      "Electricity_Per_Capita_kWh": 956.82
+    },
+    {
+      "Year": 2015,
+      "Month": 8,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 51.454,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 3.94,
+      "Electricity_Per_Capita_kWh": 965.01
+    },
+    {
+      "Year": 2015,
+      "Month": 9,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 51.472,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.06,
+      "Electricity_Per_Capita_kWh": 950.25
+    },
+    {
+      "Year": 2015,
+      "Month": 10,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 51.494,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.25,
+      "Electricity_Per_Capita_kWh": 946.07
+    },
+    {
+      "Year": 2015,
+      "Month": 11,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 51.465,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.41,
+      "Electricity_Per_Capita_kWh": 984.39
+    },
+    {
+      "Year": 2015,
+      "Month": 12,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 51.5,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.21,
+      "Electricity_Per_Capita_kWh": 994.16
+    },
+    {
+      "Year": 2016,
+      "Month": 1,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.085,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.15,
+      "Electricity_Per_Capita_kWh": 972.49
+    },
+    {
+      "Year": 2016,
+      "Month": 2,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.007,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 3.89,
+      "Electricity_Per_Capita_kWh": 956.16
+    },
+    {
+      "Year": 2016,
+      "Month": 3,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.064,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.07,
+      "Electricity_Per_Capita_kWh": 958.5
+    },
+    {
+      "Year": 2016,
+      "Month": 4,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.038,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.45,
+      "Electricity_Per_Capita_kWh": 974.7
+    },
+    {
+      "Year": 2016,
+      "Month": 5,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.022,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.86,
+      "Electricity_Per_Capita_kWh": 977.42
+    },
+    {
+      "Year": 2016,
+      "Month": 6,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.024,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.17,
+      "Electricity_Per_Capita_kWh": 971.32
+    },
+    {
+      "Year": 2016,
+      "Month": 7,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.031,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.28,
+      "Electricity_Per_Capita_kWh": 999.05
+    },
+    {
+      "Year": 2016,
+      "Month": 8,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.024,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.21,
+      "Electricity_Per_Capita_kWh": 989.49
+    },
+    {
+      "Year": 2016,
+      "Month": 9,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 51.958,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.18,
+      "Electricity_Per_Capita_kWh": 953.42
+    },
+    {
+      "Year": 2016,
+      "Month": 10,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.012,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.27,
+      "Electricity_Per_Capita_kWh": 942.23
+    },
+    {
+      "Year": 2016,
+      "Month": 11,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.067,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.34,
+      "Electricity_Per_Capita_kWh": 981.7
+    },
+    {
+      "Year": 2016,
+      "Month": 12,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.064,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.06,
+      "Electricity_Per_Capita_kWh": 943.42
+    },
+    {
+      "Year": 2017,
+      "Month": 1,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.54,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.27,
+      "Electricity_Per_Capita_kWh": 998.55
+    },
+    {
+      "Year": 2017,
+      "Month": 2,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.513,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 3.99,
+      "Electricity_Per_Capita_kWh": 967.89
+    },
+    {
+      "Year": 2017,
+      "Month": 3,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.557,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.48,
+      "Electricity_Per_Capita_kWh": 1006.39
+    },
+    {
+      "Year": 2017,
+      "Month": 4,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.556,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.88,
+      "Electricity_Per_Capita_kWh": 1016.39
+    },
+    {
+      "Year": 2017,
+      "Month": 5,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.521,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.97,
+      "Electricity_Per_Capita_kWh": 1027.94
+    },
+    {
+      "Year": 2017,
+      "Month": 6,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.521,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.67,
+      "Electricity_Per_Capita_kWh": 999.82
+    },
+    {
+      "Year": 2017,
+      "Month": 7,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.522,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.48,
+      "Electricity_Per_Capita_kWh": 1000.43
+    },
+    {
+      "Year": 2017,
+      "Month": 8,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.576,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.28,
+      "Electricity_Per_Capita_kWh": 1017.23
+    },
+    {
+      "Year": 2017,
+      "Month": 9,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.527,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.32,
+      "Electricity_Per_Capita_kWh": 987.92
+    },
+    {
+      "Year": 2017,
+      "Month": 10,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.527,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.44,
+      "Electricity_Per_Capita_kWh": 1009.92
+    },
+    {
+      "Year": 2017,
+      "Month": 11,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.502,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.37,
+      "Electricity_Per_Capita_kWh": 988.14
+    },
+    {
+      "Year": 2017,
+      "Month": 12,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.517,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.56,
+      "Electricity_Per_Capita_kWh": 1035.9
+    },
+    {
+      "Year": 2018,
+      "Month": 1,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.883,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.31,
+      "Electricity_Per_Capita_kWh": 996.22
+    },
+    {
+      "Year": 2018,
+      "Month": 2,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.901,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.12,
+      "Electricity_Per_Capita_kWh": 1007.6
+    },
+    {
+      "Year": 2018,
+      "Month": 3,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.879,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.29,
+      "Electricity_Per_Capita_kWh": 1009.32
+    },
+    {
+      "Year": 2018,
+      "Month": 4,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.895,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.49,
+      "Electricity_Per_Capita_kWh": 1001.2
+    },
+    {
+      "Year": 2018,
+      "Month": 5,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.89,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 5.02,
+      "Electricity_Per_Capita_kWh": 1017.25
+    },
+    {
+      "Year": 2018,
+      "Month": 6,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.916,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.45,
+      "Electricity_Per_Capita_kWh": 1022.54
+    },
+    {
+      "Year": 2018,
+      "Month": 7,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.924,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.37,
+      "Electricity_Per_Capita_kWh": 1028.16
+    },
+    {
+      "Year": 2018,
+      "Month": 8,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.893,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.4,
+      "Electricity_Per_Capita_kWh": 1046.68
+    },
+    {
+      "Year": 2018,
+      "Month": 9,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.936,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.43,
+      "Electricity_Per_Capita_kWh": 1035.91
+    },
+    {
+      "Year": 2018,
+      "Month": 10,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.956,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.68,
+      "Electricity_Per_Capita_kWh": 1014.83
+    },
+    {
+      "Year": 2018,
+      "Month": 11,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.92,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.35,
+      "Electricity_Per_Capita_kWh": 1024.91
+    },
+    {
+      "Year": 2018,
+      "Month": 12,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 52.928,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.52,
+      "Electricity_Per_Capita_kWh": 1024.18
+    },
+    {
+      "Year": 2019,
+      "Month": 1,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 53.763,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.23,
+      "Electricity_Per_Capita_kWh": 1041.66
+    },
+    {
+      "Year": 2019,
+      "Month": 2,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 53.69,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.15,
+      "Electricity_Per_Capita_kWh": 994.37
+    },
+    {
+      "Year": 2019,
+      "Month": 3,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 53.752,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.7,
+      "Electricity_Per_Capita_kWh": 1022.34
+    },
+    {
+      "Year": 2019,
+      "Month": 4,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 53.719,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 5.09,
+      "Electricity_Per_Capita_kWh": 1044.43
+    },
+    {
+      "Year": 2019,
+      "Month": 5,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 53.698,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 5.53,
+      "Electricity_Per_Capita_kWh": 1066.5
+    },
+    {
+      "Year": 2019,
+      "Month": 6,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 53.705,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.89,
+      "Electricity_Per_Capita_kWh": 1042.08
+    },
+    {
+      "Year": 2019,
+      "Month": 7,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 53.696,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.51,
+      "Electricity_Per_Capita_kWh": 1051.31
+    },
+    {
+      "Year": 2019,
+      "Month": 8,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 53.681,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.66,
+      "Electricity_Per_Capita_kWh": 1043.27
+    },
+    {
+      "Year": 2019,
+      "Month": 9,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 53.715,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.82,
+      "Electricity_Per_Capita_kWh": 1048.64
+    },
+    {
+      "Year": 2019,
+      "Month": 10,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 53.736,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.88,
+      "Electricity_Per_Capita_kWh": 1052.68
+    },
+    {
+      "Year": 2019,
+      "Month": 11,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 53.714,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.69,
+      "Electricity_Per_Capita_kWh": 1044.18
+    },
+    {
+      "Year": 2019,
+      "Month": 12,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 53.702,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.89,
+      "Electricity_Per_Capita_kWh": 1052.42
+    },
+    {
+      "Year": 2020,
+      "Month": 1,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 54.191,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.5,
+      "Electricity_Per_Capita_kWh": 1063.97
+    },
+    {
+      "Year": 2020,
+      "Month": 2,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 54.147,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.46,
+      "Electricity_Per_Capita_kWh": 1055.59
+    },
+    {
+      "Year": 2020,
+      "Month": 3,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 54.116,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 4.65,
+      "Electricity_Per_Capita_kWh": 1057.66
+    },
+    {
+      "Year": 2020,
+      "Month": 4,
+      "State_UT": "Andhra Pradesh",
+      "Population_Million": 54.137,
+      "Population_Growth_pct": 1.0,
+      "Electricity_Consumption_GWh": 5.13,
+      "Electricity_Per_Capita_kWh": 1067.75
+    }
+  ]
+}

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Interactive Analytics Dashboard for India State Electricity Consumption (2012-2025). Analyze trends, state disparities, population elasticity, urbanization, and weather correlation.">
-  <title>India State Electricity Consumption Intelligence Dashboard</title>
+  <meta name="description" content="State Electricity & Dynamic User Data Visualization Dashboard. Feed your own data or explore pre-analyzed empirical India electricity datasets with real-time interactive charts and statistical profiles.">
+  <title>State Electricity & Dynamic Data Intelligence Dashboard</title>
   
   <!-- Modern Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,30 +32,33 @@
           </svg>
         </div>
         <div>
-          <h1 class="brand-title">State Electricity Intelligence <span class="badge-live">Live Analytics</span></h1>
-          <p class="brand-subtitle">Empirical Analysis & Multi-Variate Exploration (India: 2012–2025)</p>
+          <h1 class="brand-title">State Electricity & Dynamic Data <span class="badge-live">Live Analytics</span></h1>
+          <p class="brand-subtitle">Empirical Analysis & Multi-Variate Exploration (Feed Your Own Data or Explore India 2012–2025)</p>
         </div>
       </div>
 
       <div class="header-actions">
+        <button id="btnFeedDataHeader" class="btn btn-primary glow-btn" title="Feed your own dataset to visualize">
+          <span>⚡ Feed Your Data</span>
+        </button>
         <button id="themeToggleBtn" class="btn btn-secondary" title="Toggle Theme">
           <span class="icon-sun">☀️</span>
           <span class="icon-moon">🌙</span>
           <span class="theme-text">Theme</span>
         </button>
-        <button id="refreshDataBtn" class="btn btn-secondary">
+        <button id="refreshDataBtn" class="btn btn-secondary" title="Reload Preloaded Data">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
           </svg>
-          Reload Data
+          Reload
         </button>
-        <a href="figures/01_total_consumption_timeseries.png" download class="btn btn-primary">
+        <a href="figures/01_total_consumption_timeseries.png" download class="btn btn-secondary">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
             <polyline points="7 10 12 15 17 10"></polyline>
             <line x1="12" y1="15" x2="12" y2="3"></line>
           </svg>
-          Export Assets
+          Assets
         </a>
       </div>
     </div>
@@ -64,70 +67,14 @@
   <!-- Main Content Layout -->
   <main class="main-container">
 
-    <!-- KPI Summary Row -->
-    <section class="kpi-grid" aria-label="Key Performance Indicators">
-      <div class="kpi-card" id="kpiMeanDaily">
-        <div class="kpi-header">
-          <span class="kpi-label">All-India Daily Mean</span>
-          <span class="kpi-pill pill-cyan">2013-2024</span>
-        </div>
-        <div class="kpi-value-wrap">
-          <span class="kpi-value" id="valMeanDaily">3,555.7</span>
-          <span class="kpi-unit">GWh / day</span>
-        </div>
-        <div class="kpi-footer positive">
-          <span class="trend-icon">▲</span> +69.3% secular rise from 2013 baseline
-        </div>
-      </div>
-
-      <div class="kpi-card" id="kpiPeakDemand">
-        <div class="kpi-header">
-          <span class="kpi-label">All-Time Peak Record</span>
-          <span class="kpi-pill pill-emerald">18 Jun 2024</span>
-        </div>
-        <div class="kpi-value-wrap">
-          <span class="kpi-value" id="valPeakDemand">5,460.7</span>
-          <span class="kpi-unit">GWh / day</span>
-        </div>
-        <div class="kpi-footer neutral">
-          <span class="trend-icon">⚡</span> Maximum national grid load recorded
-        </div>
-      </div>
-
-      <div class="kpi-card" id="kpiPopCorrelation">
-        <div class="kpi-header">
-          <span class="kpi-label">Population Elasticity</span>
-          <span class="kpi-pill pill-violet">Pearson r</span>
-        </div>
-        <div class="kpi-value-wrap">
-          <span class="kpi-value" id="valPopCorr">+0.987</span>
-          <span class="kpi-unit">R² = 0.974</span>
-        </div>
-        <div class="kpi-footer positive">
-          <span class="trend-icon">●</span> 97.4% variance explained by state scale
-        </div>
-      </div>
-
-      <div class="kpi-card" id="kpiSummerSurge">
-        <div class="kpi-header">
-          <span class="kpi-label">Summer Demand Surge</span>
-          <span class="kpi-pill pill-rose">May Peak</span>
-        </div>
-        <div class="kpi-value-wrap">
-          <span class="kpi-value" id="valSummerSurge">+19.7%</span>
-          <span class="kpi-unit">vs Feb Low</span>
-        </div>
-        <div class="kpi-footer warning">
-          <span class="trend-icon">🔥</span> Peak thermal cooling load demand
-        </div>
-      </div>
-    </section>
-
     <!-- Navigation Tabs -->
     <nav class="nav-tabs-wrapper" aria-label="Dashboard Navigation Tabs">
       <div class="nav-tabs" role="tablist">
-        <button class="tab-btn active" role="tab" aria-selected="true" data-tab="tab-trends">
-          <span class="tab-icon">📈</span> National Trends
+        <button class="tab-btn tab-btn-highlight active" role="tab" aria-selected="true" data-tab="tab-custom-data">
+          <span class="tab-icon">✨</span> Dynamic Data Studio (Feed Data)
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" data-tab="tab-trends">
+          <span class="tab-icon">📈</span> National Trends (Benchmark)
         </button>
         <button class="tab-btn" role="tab" aria-selected="false" data-tab="tab-states">
           <span class="tab-icon">🗺️</span> State Disparities
@@ -147,8 +94,448 @@
       </div>
     </nav>
 
-    <!-- TAB 1: National Trends -->
-    <div id="tab-trends" class="tab-content active" role="tabpanel">
+    <!-- =========================================================================
+         TAB 0: Dynamic Data Studio (User Data Feeding & Interactive Visualizer)
+         ========================================================================= -->
+    <div id="tab-custom-data" class="tab-content active" role="tabpanel">
+
+      <!-- Ingestion Hub Card -->
+      <section class="card mb-4" id="ingestionHubCard">
+        <div class="card-header">
+          <div>
+            <h2 class="card-title">Feed Your Data to Visualize Dynamically</h2>
+            <p class="card-subtitle">Upload any CSV, TSV, or JSON file, or copy-paste your raw data table below. The engine automatically infers columns, computes statistics, and renders real-time interactive charts.</p>
+          </div>
+        </div>
+
+        <div class="data-feed-container">
+          <!-- Input Mode Switcher -->
+          <div class="input-modes-nav">
+            <button class="input-mode-btn active" id="modeBtnUpload" data-mode="upload">
+              📁 Upload File (CSV / JSON / TSV)
+            </button>
+            <button class="input-mode-btn" id="modeBtnPaste" data-mode="paste">
+              📝 Paste Table Data
+            </button>
+            <button class="input-mode-btn" id="modeBtnPresets" data-mode="presets">
+              🧪 1-Click Sample Presets
+            </button>
+          </div>
+
+          <!-- Mode 1: Drag & Drop Upload Zone -->
+          <div id="feedPanelUpload" class="feed-panel active">
+            <div class="upload-dropzone" id="uploadDropzone">
+              <span class="dropzone-icon">📥</span>
+              <div class="dropzone-title">Drag & drop your data file here</div>
+              <div class="dropzone-subtitle">Supports CSV, TSV, TXT, or JSON tabular datasets (up to tens of thousands of rows)</div>
+              <button type="button" class="btn btn-primary" id="btnBrowseFile">
+                Browse File From Device
+              </button>
+              <input type="file" id="userFileInput" class="file-hidden-input" accept=".csv,.tsv,.json,.txt">
+            </div>
+          </div>
+
+          <!-- Mode 2: Paste Raw Data -->
+          <div id="feedPanelPaste" class="feed-panel" style="display: none;">
+            <div class="paste-container">
+              <label for="pasteInputArea" class="builder-label">Paste raw CSV, TSV or JSON array:</label>
+              <textarea id="pasteInputArea" class="paste-textarea" placeholder="State,Year,Solar_MW,Wind_MW,Total_Clean_MW&#10;Maharashtra,2024,4800,5100,9900&#10;Gujarat,2024,10200,8900,19100&#10;Rajasthan,2024,17800,5200,23000&#10;Tamil Nadu,2024,6700,9800,16500&#10;Karnataka,2024,8100,5800,13900&#10;Andhra Pradesh,2024,4500,4100,8600&#10;Madhya Pradesh,2024,3100,2800,5900"></textarea>
+              <div class="builder-actions">
+                <button type="button" class="btn btn-primary" id="btnParsePastedData">
+                  Visualize Pasted Data
+                </button>
+                <button type="button" class="btn btn-secondary" id="btnClearPastedData">
+                  Clear Text
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mode 3: 1-Click Sample Presets -->
+          <div id="feedPanelPresets" class="feed-panel" style="display: none;">
+            <div class="samples-grid">
+              <div class="sample-card" data-preset="solar">
+                <div>
+                  <h4>☀️ State Clean Energy Capacity (2024)</h4>
+                  <p>State-wise operational Solar, Wind, and Total Clean Power capacity with generation shares.</p>
+                </div>
+                <div class="sample-meta">
+                  <span>10 Indian States • 5 Metrics</span>
+                  <span class="btn-sm">Load Preset →</span>
+                </div>
+              </div>
+
+              <div class="sample-card" data-preset="monthly_demand">
+                <div>
+                  <h4>⚡ Monthly Power Demand & Weather (2024)</h4>
+                  <p>Chronological month-by-month grid load vs. average outdoor temperature and heat index.</p>
+                </div>
+                <div class="sample-meta">
+                  <span>12 Months • 4 Metrics</span>
+                  <span class="btn-sm">Load Preset →</span>
+                </div>
+              </div>
+
+              <div class="sample-card" data-preset="global_energy">
+                <div>
+                  <h4>🌍 International Energy & Carbon Disparities</h4>
+                  <p>Cross-country electricity generation, per-capita kWh, renewable share, and CO2 emissions.</p>
+                </div>
+                <div class="sample-meta">
+                  <span>15 Countries • 6 Metrics</span>
+                  <span class="btn-sm">Load Preset →</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Active Loaded Dataset Status & Profiling Banner -->
+      <div id="activeDatasetBanner" class="active-dataset-banner" style="display: none;">
+        <div class="banner-info">
+          <span class="banner-badge">Active Dataset</span>
+          <div>
+            <div class="banner-title" id="activeDatasetName">dataset.csv</div>
+            <div class="banner-stats" id="activeDatasetStats">Loading dataset statistics...</div>
+          </div>
+        </div>
+        <div class="builder-actions">
+          <button type="button" class="btn btn-secondary btn-sm" id="btnResetCustomData">
+            Load Different Data
+          </button>
+          <button type="button" class="btn btn-secondary btn-sm" id="btnExportCustomCSV">
+            Export Cleaned CSV
+          </button>
+        </div>
+      </div>
+
+      <!-- Dataset Schema Profiling Card -->
+      <section class="card mb-4" id="customSchemaCard" style="display: none;">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title">Dataset Schema & Feature Detection</h3>
+            <p class="card-subtitle">Engine auto-inferred data types and column roles</p>
+          </div>
+          <div id="dataProfileCounters" class="builder-actions"></div>
+        </div>
+        <div class="profile-badges-row" id="schemaBadgesContainer"></div>
+      </section>
+
+      <!-- Dynamic KPIs Computed for User Data -->
+      <section class="mb-4" id="customKpiSection" style="display: none;">
+        <div class="card mb-3" style="padding: 14px 20px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+            <label for="customKpiMetricSelect" class="filter-label" style="margin: 0; font-weight: 700;">
+              Select Metric for Dynamic KPI Scorecard:
+            </label>
+            <select id="customKpiMetricSelect" class="custom-select" style="min-width: 220px;"></select>
+          </div>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-label">Cumulative Total</span>
+              <span class="kpi-pill pill-cyan">Sum</span>
+            </div>
+            <div class="kpi-value-wrap">
+              <span class="kpi-value" id="customKpiSum">0</span>
+            </div>
+            <div class="kpi-footer positive">
+              <span class="trend-icon">∑</span> Across all valid records
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-label">Average / Mean</span>
+              <span class="kpi-pill pill-emerald">Mean</span>
+            </div>
+            <div class="kpi-value-wrap">
+              <span class="kpi-value" id="customKpiMean">0</span>
+            </div>
+            <div class="kpi-footer neutral">
+              <span class="trend-icon">μ</span> Arithmetic mean value
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-label">Peak Maximum</span>
+              <span class="kpi-pill pill-rose">Max Record</span>
+            </div>
+            <div class="kpi-value-wrap">
+              <span class="kpi-value" id="customKpiMax">0</span>
+            </div>
+            <div class="kpi-footer warning">
+              <span class="trend-icon">▲</span> <span id="customKpiMaxLabel">Highest entity</span>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-label">Minimum Record</span>
+              <span class="kpi-pill pill-violet">Min Record</span>
+            </div>
+            <div class="kpi-value-wrap">
+              <span class="kpi-value" id="customKpiMin">0</span>
+            </div>
+            <div class="kpi-footer positive">
+              <span class="trend-icon">▼</span> <span id="customKpiMinLabel">Lowest entity</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Auto-Generated Visualizations Grid -->
+      <section id="customAutoChartsSection" style="display: none;">
+        <div class="charts-grid-2">
+          <!-- Chart 1: Ranking / Category Comparison -->
+          <div class="card chart-card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title" id="customRankingChartTitle">Entity Ranking & Comparison</h3>
+                <p class="card-subtitle">Highest to lowest values across categories</p>
+              </div>
+              <div class="btn-group">
+                <button id="btnCustomRankTop10" class="btn-sm active">Top 10</button>
+                <button id="btnCustomRankAll" class="btn-sm">All</button>
+              </div>
+            </div>
+            <div class="chart-container" style="height: 380px;">
+              <canvas id="customRankingCanvas"></canvas>
+            </div>
+          </div>
+
+          <!-- Chart 2: Time Trend or Secondary Metric -->
+          <div class="card chart-card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title" id="customTrendChartTitle">Chronological Trend Trajectory</h3>
+                <p class="card-subtitle">Temporal progression over records</p>
+              </div>
+            </div>
+            <div class="chart-container" style="height: 380px;">
+              <canvas id="customTrendCanvas"></canvas>
+            </div>
+          </div>
+
+          <!-- Chart 3: Proportional Composition Doughnut -->
+          <div class="card chart-card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title" id="customDonutChartTitle">Proportional Share Breakdown</h3>
+                <p class="card-subtitle">Percentage contribution by category</p>
+              </div>
+            </div>
+            <div class="chart-container" style="height: 360px;">
+              <canvas id="customDonutCanvas"></canvas>
+            </div>
+          </div>
+
+          <!-- Chart 4: Multi-Metric Scatter / Correlation -->
+          <div class="card chart-card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title" id="customScatterChartTitle">Bi-Variate Correlation Plot</h3>
+                <p class="card-subtitle">Cross-metric relationship and dispersion</p>
+              </div>
+            </div>
+            <div class="chart-container" style="height: 360px;">
+              <canvas id="customScatterCanvas"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Interactive No-Code Custom Chart Studio -->
+      <section class="card mt-4" id="customBuilderSection" style="display: none;">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title">Interactive Custom Chart Studio</h3>
+            <p class="card-subtitle">Pick any chart style, select X & Y dimensions, configure aggregations, and instantly render or download</p>
+          </div>
+          <div class="builder-actions">
+            <button type="button" class="btn btn-secondary btn-sm" id="btnDownloadBuilderChart">
+              📷 Download Chart (PNG)
+            </button>
+          </div>
+        </div>
+
+        <div class="chart-builder-controls">
+          <div class="builder-field">
+            <label for="builderChartType" class="builder-label">Chart Type</label>
+            <select id="builderChartType" class="builder-select">
+              <option value="bar">Vertical Bar</option>
+              <option value="horizontalBar">Horizontal Bar</option>
+              <option value="line">Line Chart</option>
+              <option value="area">Area Chart</option>
+              <option value="doughnut">Doughnut</option>
+              <option value="pie">Pie Chart</option>
+              <option value="scatter">Scatter Plot</option>
+            </select>
+          </div>
+
+          <div class="builder-field">
+            <label for="builderXAxis" class="builder-label">X-Axis / Category</label>
+            <select id="builderXAxis" class="builder-select"></select>
+          </div>
+
+          <div class="builder-field">
+            <label for="builderYAxis" class="builder-label">Y-Axis / Metric</label>
+            <select id="builderYAxis" class="builder-select"></select>
+          </div>
+
+          <div class="builder-field">
+            <label for="builderAgg" class="builder-label">Aggregation</label>
+            <select id="builderAgg" class="builder-select">
+              <option value="sum">Sum</option>
+              <option value="mean">Average (Mean)</option>
+              <option value="count">Count Records</option>
+              <option value="max">Maximum</option>
+              <option value="min">Minimum</option>
+            </select>
+          </div>
+
+          <div class="builder-field">
+            <label for="builderSort" class="builder-label">Sort Order</label>
+            <select id="builderSort" class="builder-select">
+              <option value="desc">High to Low (Desc)</option>
+              <option value="asc">Low to High (Asc)</option>
+              <option value="none">Original Order</option>
+            </select>
+          </div>
+
+          <div class="builder-field">
+            <label for="builderLimit" class="builder-label">Display Limit</label>
+            <select id="builderLimit" class="builder-select">
+              <option value="10">Top 10</option>
+              <option value="5">Top 5</option>
+              <option value="25">Top 25</option>
+              <option value="all">All Records</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="chart-container" style="height: 420px;">
+          <canvas id="customBuilderCanvas"></canvas>
+        </div>
+      </section>
+
+      <!-- Interactive Data Table Explorer for Fed Data -->
+      <section class="card mt-4" id="customTableSection" style="display: none;">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title">User Dataset Records Explorer</h3>
+            <p class="card-subtitle">Search, sort columns, and inspect raw parsed records</p>
+          </div>
+          <div class="search-box">
+            <input type="text" id="customTableSearch" placeholder="Search records..." class="search-input">
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="data-table" id="customRecordsTable">
+            <thead id="customTableHead"></thead>
+            <tbody id="customTableBody"></tbody>
+          </table>
+        </div>
+
+        <div class="table-pagination">
+          <div id="customTablePageInfo">Showing 0 of 0 records</div>
+          <div class="pagination-buttons">
+            <button type="button" class="btn-sm" id="btnCustomTablePrev">← Previous</button>
+            <button type="button" class="btn-sm" id="btnCustomTableNext">Next →</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Python Backend Publication Figures Integration -->
+      <section class="card mt-4 callout-card" id="backendExportCard" style="display: none;">
+        <div class="callout-icon">📊</div>
+        <div style="flex: 1;">
+          <h3 class="callout-title">Generate High-Resolution Publication Figures (Python Backend)</h3>
+          <p class="callout-text">
+            If running via the Python dashboard server (<code>uv run python -m dvp_project.serve_dashboard</code>), click below to dispatch your dataset to Python's Matplotlib and Seaborn pipeline for 300 DPI publication rendering.
+          </p>
+          <div style="margin-top: 12px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+            <button type="button" class="btn btn-primary" id="btnTriggerBackendFigures">
+              Generate 300 DPI Figures
+            </button>
+            <span id="backendFigureStatus" style="font-size: 0.85rem; color: var(--text-secondary);"></span>
+          </div>
+          <div id="backendFiguresGallery" class="figures-gallery-grid" style="margin-top: 16px; display: none;"></div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- =========================================================================
+         TAB 1: Preloaded All-India National Trends
+         ========================================================================= -->
+    <div id="tab-trends" class="tab-content" role="tabpanel">
+
+      <!-- National KPI Summary Row -->
+      <section class="kpi-grid" aria-label="Key Performance Indicators">
+        <div class="kpi-card" id="kpiMeanDaily">
+          <div class="kpi-header">
+            <span class="kpi-label">All-India Daily Mean</span>
+            <span class="kpi-pill pill-cyan">2013-2024</span>
+          </div>
+          <div class="kpi-value-wrap">
+            <span class="kpi-value" id="valMeanDaily">3,555.7</span>
+            <span class="kpi-unit">GWh / day</span>
+          </div>
+          <div class="kpi-footer positive">
+            <span class="trend-icon">▲</span> +69.3% secular rise from 2013 baseline
+          </div>
+        </div>
+
+        <div class="kpi-card" id="kpiPeakDemand">
+          <div class="kpi-header">
+            <span class="kpi-label">All-Time Peak Record</span>
+            <span class="kpi-pill pill-emerald">18 Jun 2024</span>
+          </div>
+          <div class="kpi-value-wrap">
+            <span class="kpi-value" id="valPeakDemand">5,460.7</span>
+            <span class="kpi-unit">GWh / day</span>
+          </div>
+          <div class="kpi-footer neutral">
+            <span class="trend-icon">⚡</span> Maximum national grid load recorded
+          </div>
+        </div>
+
+        <div class="kpi-card" id="kpiPopCorrelation">
+          <div class="kpi-header">
+            <span class="kpi-label">Population Elasticity</span>
+            <span class="kpi-pill pill-violet">Pearson r</span>
+          </div>
+          <div class="kpi-value-wrap">
+            <span class="kpi-value" id="valPopCorr">+0.987</span>
+            <span class="kpi-unit">R² = 0.974</span>
+          </div>
+          <div class="kpi-footer positive">
+            <span class="trend-icon">●</span> 97.4% variance explained by state scale
+          </div>
+        </div>
+
+        <div class="kpi-card" id="kpiSummerSurge">
+          <div class="kpi-header">
+            <span class="kpi-label">Summer Demand Surge</span>
+            <span class="kpi-pill pill-rose">May Peak</span>
+          </div>
+          <div class="kpi-value-wrap">
+            <span class="kpi-value" id="valSummerSurge">+19.7%</span>
+            <span class="kpi-unit">vs Feb Low</span>
+          </div>
+          <div class="kpi-footer warning">
+            <span class="trend-icon">🔥</span> Peak thermal cooling load demand
+          </div>
+        </div>
+      </section>
+
       <div class="charts-grid-2">
         <!-- Daily Time Series -->
         <div class="card chart-card">
@@ -214,7 +601,9 @@
       </div>
     </div>
 
-    <!-- TAB 2: State Disparities & Drilldown -->
+    <!-- =========================================================================
+         TAB 2: State Disparities & Drilldown
+         ========================================================================= -->
     <div id="tab-states" class="tab-content" role="tabpanel">
       <!-- State Drill-Down Header -->
       <div class="card filter-bar-card mb-4">
@@ -236,9 +625,7 @@
               <option value="Punjab">Punjab</option>
             </select>
           </div>
-          <div class="state-quick-stats" id="stateQuickStats">
-            <!-- Populated dynamically via JS -->
-          </div>
+          <div class="state-quick-stats" id="stateQuickStats"></div>
         </div>
       </div>
 
@@ -297,15 +684,15 @@
                 <th data-sort="temp" class="num-col">Avg Temp (°C)</th>
               </tr>
             </thead>
-            <tbody id="statesTableBody">
-              <!-- Rendered dynamically via JS -->
-            </tbody>
+            <tbody id="statesTableBody"></tbody>
           </table>
         </div>
       </div>
     </div>
 
-    <!-- TAB 3: Climate & Weather -->
+    <!-- =========================================================================
+         TAB 3: Climate & Weather
+         ========================================================================= -->
     <div id="tab-climate" class="tab-content" role="tabpanel">
       <div class="grid-weather-summary mb-4">
         <div class="weather-stat-card">
@@ -360,16 +747,16 @@
                   <th>Physical Driver</th>
                 </tr>
               </thead>
-              <tbody id="weatherTableBody">
-                <!-- Rendered dynamically via JS -->
-              </tbody>
+              <tbody id="weatherTableBody"></tbody>
             </table>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- TAB 4: Urbanization & Demographics -->
+    <!-- =========================================================================
+         TAB 4: Urbanization & Demographics
+         ========================================================================= -->
     <div id="tab-urbanization" class="tab-content" role="tabpanel">
       <div class="charts-grid-2">
         <div class="card chart-card">
@@ -398,23 +785,25 @@
         <div>
           <h3 class="callout-title">The Urbanization Paradox Explained</h3>
           <p class="callout-text">
-            While total urban population is strongly correlated with electricity consumption (<strong>r = +0.931</strong>), the urbanization <em>percentage</em> exhibits a slight negative correlation (<strong>r = -0.147</strong>). This is an empirical artifact of geographic scale: small Union Territories like Chandigarh (>97% urbanized) and Delhi have dense urban proportions but compact total consumption relative to agricultural megastates like Uttar Pradesh and Bihar.
+            While total urban population is strongly correlated with electricity consumption (<strong>r = +0.931</strong>), the urbanization <em>percentage</em> exhibits a slight negative correlation (<strong>r = -0.147</strong>). This is an empirical artifact of geographic scale: small Union Territories like Chandigarh (&gt;97% urbanized) and Delhi have dense urban proportions but compact total consumption relative to agricultural megastates like Uttar Pradesh and Bihar.
           </p>
         </div>
       </div>
     </div>
 
-    <!-- TAB 5: Publication Figures Gallery -->
+    <!-- =========================================================================
+         TAB 5: Publication Figures Gallery
+         ========================================================================= -->
     <div id="tab-gallery" class="tab-content" role="tabpanel">
       <div class="gallery-intro mb-4">
         <p>All figures below were rendered by the Python pipeline using Matplotlib and Seaborn at <strong>300 DPI publication resolution</strong>. Click any card to inspect the full-resolution asset.</p>
       </div>
-      <div class="figures-gallery-grid" id="figuresGallery">
-        <!-- Rendered dynamically via JS -->
-      </div>
+      <div class="figures-gallery-grid" id="figuresGallery"></div>
     </div>
 
-    <!-- TAB 6: Findings Report Viewer -->
+    <!-- =========================================================================
+         TAB 6: Findings Report Viewer
+         ========================================================================= -->
     <div id="tab-reports" class="tab-content" role="tabpanel">
       <div class="card report-viewer-card">
         <div class="card-header">
@@ -426,9 +815,7 @@
             Download Markdown (.md)
           </a>
         </div>
-        <div class="report-content" id="reportContentArea">
-          <!-- Populated dynamically via JS -->
-        </div>
+        <div class="report-content" id="reportContentArea"></div>
       </div>
     </div>
 
@@ -449,8 +836,8 @@
   <!-- Footer -->
   <footer class="app-footer">
     <div class="footer-container">
-      <p>State Electricity Consumption Analysis & Visualization Project • Built with Python, Pandas, Matplotlib, Seaborn & Modern Vanilla Web Technologies.</p>
-      <p class="text-muted">Reproducible UV-managed pipeline • Original CSV datasets preserved in <code>datasets/</code>.</p>
+      <p>State Electricity & Dynamic User Data Visualization System • Built with Python, Pandas, Matplotlib, Seaborn & Chart.js.</p>
+      <p class="text-muted">Dynamic User Upload Enabled • Original CSV datasets preserved in <code>datasets/</code>.</p>
     </div>
   </footer>
 

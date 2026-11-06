@@ -241,5 +241,80 @@ class TestVisualizationsAndReports(unittest.TestCase):
         self.assertIn("`sample_ds`", content)
 
 
+class TestDynamicUserData(unittest.TestCase):
+    """Test dynamic user dataset loading, schema detection, and visualization generation."""
+
+    def setUp(self):
+        self.temp_dir = Path(tempfile.mkdtemp())
+        self.sample_csv = self.temp_dir / "user_sample.csv"
+        self.sample_csv.write_text(
+            "Date,Region,Demand_MW,Temperature_C\n"
+            "2024-01-01,North,4500.5,18.2\n"
+            "2024-01-02,South,3800.0,24.1\n"
+            "2024-01-03,West,5200.2,22.5\n"
+            "2024-01-04,East,2900.8,19.0\n",
+            encoding="utf-8",
+        )
+
+    def tearDown(self):
+        shutil.rmtree(self.temp_dir, ignore_errors=True)
+
+    def test_load_and_detect_types(self):
+        from dvp_project.dynamic_analyzer import detect_column_types, load_user_data
+
+        df = load_user_data(self.sample_csv)
+        self.assertEqual(len(df), 4)
+        self.assertEqual(list(df.columns), ["Date", "Region", "Demand_MW", "Temperature_C"])
+
+        types = detect_column_types(df)
+        self.assertIn("Demand_MW", types["numeric_cols"])
+        self.assertIn("Temperature_C", types["numeric_cols"])
+        self.assertIn("Region", types["categorical_cols"])
+        self.assertIn("Date", types["date_cols"])
+
+    def test_dynamic_analysis_and_kpis(self):
+        from dvp_project.dynamic_analyzer import analyze_user_dataset, load_user_data
+
+        df = load_user_data(self.sample_csv)
+        analysis = analyze_user_dataset(df, dataset_name="TestSet")
+        self.assertEqual(analysis["row_count"], 4)
+        self.assertEqual(analysis["column_count"], 4)
+        self.assertIn("Demand_MW", analysis["numeric_summary"])
+
+        demand_stat = analysis["numeric_summary"]["Demand_MW"]
+        self.assertAlmostEqual(demand_stat["sum"], 16401.5, places=1)
+        self.assertAlmostEqual(demand_stat["max"], 5200.2, places=1)
+        self.assertAlmostEqual(demand_stat["min"], 2900.8, places=1)
+
+    def test_dynamic_figures_generation(self):
+        from dvp_project.dynamic_analyzer import (
+            analyze_user_dataset,
+            generate_custom_figures,
+            load_user_data,
+        )
+
+        df = load_user_data(self.sample_csv)
+        analysis = analyze_user_dataset(df)
+        figures = generate_custom_figures(df, analysis, self.temp_dir)
+        self.assertGreaterEqual(len(figures), 2)
+        for fig_path in figures:
+            self.assertTrue(fig_path.exists())
+            self.assertGreater(fig_path.stat().st_size, 1000)
+            with open(fig_path, "rb") as f:
+                header = f.read(4)
+                self.assertEqual(header, b"\x89PNG")
+
+    def test_pasted_data_string_parsing(self):
+        from dvp_project.dynamic_analyzer import analyze_user_dataset, load_user_data
+
+        raw_csv_str = "Entity,Score\nAlpha,95\nBeta,88\nGamma,72\n"
+        df = load_user_data(raw_csv_str)
+        self.assertEqual(len(df), 3)
+        res = analyze_user_dataset(df)
+        self.assertIn("Score", res["numeric_summary"])
+        self.assertEqual(res["numeric_summary"]["Score"]["max"], 95)
+
+
 if __name__ == "__main__":
     unittest.main()
+

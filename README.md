@@ -118,32 +118,54 @@ uv pip install -e . --no-deps
 
 ---
 
-## 6. Execution Commands
+## 6. Execution Commands & Dynamic Data Feeding
 
-### Run the Complete End-to-End Pipeline
-Execute the full data loading, auditing, cleaning, statistical analysis, figure generation, and findings reporting workflow:
+### Option A: Feed Your Own Data via Interactive Web Dashboard (Recommended)
+Launch the interactive web dashboard:
+```bash
+uv run python -m dvp_project.serve_dashboard
+```
+Or with uv:
+```bash
+uv run dvp-project --dashboard
+```
+1. Open the dashboard in your browser (`http://localhost:8080/`).
+2. Go to the **Dynamic Data Studio** tab (or click **⚡ Feed Your Data** in the top navigation).
+3. Choose your preferred input method:
+   - **File Upload:** Drag & drop any CSV, TSV, or JSON file.
+   - **Paste Data:** Copy-paste raw tabular text directly.
+   - **1-Click Presets:** Test instantly with built-in clean energy, power demand, or global energy presets.
+4. The system automatically:
+   - Infers column roles (numeric metrics, categories, date/time).
+   - Computes dynamic KPIs (Cumulative Total, Mean, Max Entity, Min Entity).
+   - Renders interactive charts (Rankings Bar Chart, Trend Trajectory, Share Doughnut, Scatter Correlation).
+   - Provides an **Interactive Custom Chart Studio** (Line, Bar, Area, Scatter, Doughnut with customizable axes and aggregations).
+   - Provides a searchable, sortable Data Table Explorer with CSV export.
+
+### Option B: Feed Custom Data via Command Line Interface (CLI)
+You can also run the Python analytics pipeline directly on any user dataset:
+```bash
+python -m dvp_project.main --input path/to/your_data.csv
+```
+This automatically:
+- Parses and validates your dataset.
+- Executes statistical profiling and detects numeric/categorical/date columns.
+- Generates 300 DPI publication figures (`custom_category_ranking.png`, `custom_metric_distribution.png`, `custom_correlation_heatmap.png`).
+- Generates a customized markdown report in `outputs/reports/user_data_analysis_report.md`.
+- Exports `dashboard/custom_data.json` for instant viewing in the browser.
+
+### Option C: Run the Preloaded All-India Benchmark Pipeline
+Execute the full data loading, auditing, cleaning, statistical analysis, and figure generation workflow for historical India datasets:
 ```bash
 uv run dvp-project
 ```
-
-Or execute directly through Python:
+Or:
 ```bash
 python -m dvp_project.main
 ```
 
-### Launch the Interactive Web Dashboard
-Start the local server and automatically open the interactive intelligence dashboard in your browser:
-```bash
-uv run dvp-project --dashboard
-```
-Or run directly with the Python server launcher:
-```bash
-uv run python -m dvp_project.serve_dashboard
-```
-Or open [`dashboard/index.html`](file:///c:/Users/Kanishka%20MBK/OneDrive/Desktop/dvp%20project/dashboard/index.html) directly.
-
-### Run the Test Suite
-Execute the 12 automated unit and integration tests covering data loading, error handling, date parsing, cleaning, calculations, and chart generation:
+### Run the Automated Test Suite
+Execute the 16 automated unit and integration tests covering dataset loading, dynamic user data ingestion, schema inference, KPIs, calculations, and chart generation:
 ```bash
 python -m unittest tests/test_data_checks.py
 ```
